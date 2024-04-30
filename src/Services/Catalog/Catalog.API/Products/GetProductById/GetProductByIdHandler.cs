@@ -20,6 +20,7 @@ namespace Catalog.API.Products.GetProductById
                 throw new ProductNotFoundException();
             }
 
+            // return product is null ? throw new ProductNotFoundException() : new GetProductByIdResult(product);
             return new GetProductByIdResult(product);
         }
     }

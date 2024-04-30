@@ -1,6 +1,4 @@
-﻿using Marten.Linq.QueryHandlers;
-
-namespace Catalog.API.Products.GetProductByCategory
+﻿namespace Catalog.API.Products.GetProductByCategory
 {
     public record GetProductByCategoryQuery(string Category) : IQuery<GetProductByCategoryResult>;
     public record GetProductByCategoryResult(IEnumerable<Product> Products);
@@ -15,7 +13,7 @@ namespace Catalog.API.Products.GetProductByCategory
 
             var products = await session.Query<Product>()
                 .Where(p => p.Category.Contains(query.Category))
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
             return new GetProductByCategoryResult(products);
         }
