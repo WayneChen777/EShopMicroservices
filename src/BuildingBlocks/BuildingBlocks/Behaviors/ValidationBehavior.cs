@@ -16,7 +16,7 @@ namespace BuildingBlocks.Behaviors
             var validationResults =
                 await Task.WhenAll(validators.Select(v => v.ValidateAsync(context, cancellationToken)));
 
-            var failures = 
+            var failures =
                 validationResults
                     .Where(r => r.Errors.Any())
                     .SelectMany(r => r.Errors)
